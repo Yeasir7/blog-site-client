@@ -1,9 +1,23 @@
-import { Button } from "@/components/ui/button";
+import { blogServices } from "@/services/blog.services";
+import HomePageCard from "@/components/modules/homepage/hompageCard";
 
-export default function Home() {
+export default async function Home() {
+  const { data } = await blogServices.getBlogPosts(
+    {
+      isFeatured: false,
+    },
+    {
+      cache: "no-store",
+    },
+  );
+
+  console.log(data);
+
+  const postsArray = data?.data || [];
+
   return (
-    <div>
-      <Button>click me</Button>
-    </div>
+    <main>
+      <HomePageCard posts={postsArray} />
+    </main>
   );
 }
