@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
 import {
   Sidebar,
@@ -13,25 +13,30 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   SidebarRail,
-} from "@/components/ui/sidebar"
-import Link from "next/link"
-import { adminRoutes } from "@/routes/adminRoutes"
-import { userRoutes } from "@/routes/userRoutes"
-import { Route } from "@/types"
+} from "@/components/ui/sidebar";
+import Link from "next/link";
+import { adminRoutes } from "@/routes/adminRoutes";
+import { userRoutes } from "@/routes/userRoutes";
+import { Route } from "@/types";
+import { Roles } from "@/constants/role";
 
-
-export function AppSidebar({ user ,...props }: {user: {role : string} & React.ComponentProps<typeof Sidebar>}) {
-  let routes : Route[]  = []
+export function AppSidebar({
+  user,
+  ...props
+}: {
+  user: { role: string } & React.ComponentProps<typeof Sidebar>;
+}) {
+  let routes: Route[] = [];
   switch (user.role) {
-    case "admin":
-      routes = adminRoutes
+    case Roles.admin:
+      routes = adminRoutes;
       break;
-    case "user":
-      routes = userRoutes
+    case Roles.user:
+      routes = userRoutes;
       break;
-  
+
     default:
-      routes = []
+      routes = [];
       break;
   }
   return (
@@ -64,5 +69,5 @@ export function AppSidebar({ user ,...props }: {user: {role : string} & React.Co
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }

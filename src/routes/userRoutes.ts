@@ -4,10 +4,10 @@ export const userRoutes: Route[] = [
   {
     title: "blog Management",
     url: "#",
-    items: [
+    items: [  
       {
         title: "Blog",
-        url: "/write-blog",
+        url: "/dashboard/create-blog",
       },
     ],
   },
